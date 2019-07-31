@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane fx:id="menuScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="393.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+    <bottom>
+        <Button fx:id="startGame" disable="true" mnemonicParsing="false" onAction="#startGame" prefHeight="33.0" prefWidth="393.0" text="ИГРАТЬ" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="Arial Black" size="15.0" />
+            </font>
+        </Button>
+    </bottom>
+   <center>
+      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0"
+            BorderPane.alignment="CENTER">
+         <Pane id="playerPane" fx:id="playerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+               minWidth="-Infinity" prefHeight="92.0" prefWidth="393.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="18.0" prefHeight="26.0" prefWidth="393.0"
+                   text="выбери противника" textAlignment="CENTER">
+               <font>
+                  <Font size="13.0"/>
+               </font>
+            </Label>
+            <RadioButton fx:id="human" contentDisplay="CENTER" layoutX="117.0" layoutY="41.0" mnemonicParsing="false"
+                         onAction="#showNetSetting" prefHeight="25.0" prefWidth="162.0" text="сетевая игра">
+               <toggleGroup>
+                  <ToggleGroup fx:id="enemy"/>
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="ai" contentDisplay="CENTER" layoutX="117.0" layoutY="63.0" mnemonicParsing="false"
+                         prefHeight="21.0" prefWidth="169.0" selected="true" text="против компьютера"
+                         toggleGroup="$enemy"/>
+            <Pane id="sizePane" fx:id="sizePane" layoutY="231.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                  minHeight="-Infinity" minWidth="-Infinity" prefHeight="124.0" prefWidth="393.0">
+               <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="25.0"
+                      prefWidth="393.0" text="выбери размер игрового поля">
+                  <font>
+                     <Font name="System Bold" size="13.0"/>
+                  </font>
+               </Label>
+               <Label fx:id="counter" alignment="CENTER" layoutX="163.0" layoutY="22.0" prefHeight="21.0"
+                      prefWidth="66.0" text="3">
+                  <font>
+                     <Font name="System Bold" size="12.0"/>
+                  </font>
+               </Label>
+               <Button fx:id="minusSize" layoutX="84.0" layoutY="43.0" mnemonicParsing="false"
+                       onAction="#minusSize" prefHeight="19.0" prefWidth="112.0" text="минус">
+                  <font>
+                     <Font name="System Bold" size="12.0"/>
+                  </font>
+               </Button>
+               <Button fx:id="plusSize" layoutX="196.0" layoutY="43.0" mnemonicParsing="false"
+                       onAction="#plusSize" prefHeight="7.0" prefWidth="116.0" text="плюс">
+                  <font>
+                     <Font name="System Bold" size="12.0"/>
+                  </font>
+               </Button>
+               <Button fx:id="selectSize" layoutX="165.0" layoutY="72.0" mnemonicParsing="false"
+                       onAction="#showSize" text="Выбрать"/>
+               <Label fx:id="changeSize" alignment="CENTER" contentDisplay="CENTER" layoutY="98.0"
+                      prefHeight="26.0" prefWidth="393.0"/>
+            </Pane>
+         </Pane>
+         <Pane id="netPane" fx:id="netPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+               minWidth="-Infinity" prefHeight="144.0" prefWidth="393.0" visible="false">
+            <RadioButton fx:id="serverButton" layoutX="140.0" layoutY="26.0" mnemonicParsing="false"
+                         onAction="#getServerIP" text="я буду сервером">
+               <toggleGroup>
+                  <ToggleGroup fx:id="net"/>
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="clientButton" layoutX="132.0" layoutY="51.0" mnemonicParsing="false"
+                         onAction="#getClientConnection" text="я не буду сервером" toggleGroup="$net"/>
+            <Label id="serverIP" fx:id="serverIP" alignment="CENTER" contentDisplay="CENTER" layoutY="74.0"
+                   prefHeight="29.0" prefWidth="393.0" textAlignment="CENTER"/>
+            <TextField fx:id="insertIP" layoutX="42.0" layoutY="76.0" onAction="#deleteTextInTextField"
+                       prefHeight="25.0" prefWidth="309.0" promptText="Введите IP" visible="false"/>
+            <Button fx:id="setIP" layoutX="105.0" layoutY="111.0" mnemonicParsing="false" onAction="#setIP"
+                    prefHeight="25.0" prefWidth="179.0" text="Начать сетевую игру" visible="false"/>
+         </Pane>
+      </VBox>
+   </center>
+</BorderPane>
